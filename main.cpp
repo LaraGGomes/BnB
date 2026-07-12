@@ -1,28 +1,32 @@
-#include "Framework.h"
-#include "leitor-instancias/src/Data.h"
 #include <iostream>
+#include "algoritmo-hungaro/src/Data.h"
+#include "algoritmo-hungaro/src/hungarian.h"
+#include "Solucao.h"
 
 using namespace std;
 
 int main(int argc, char** argv) {
 
     auto data = Data(argc, argv[1]);
-
     data.read();
+    string branching = "DFS";
 
-    int maxIterILS;
-    int V = data.getDimension();
-    
-    srand(time(NULL));
+    size_t n = data.getDimension();
 
-    if (V >= 150)
-        maxIterILS = V/2;
-    else 
-        maxIterILS = V;
+	double **cost = new double*[n];
+	for (int i = 0; i < n; i++){
+		cost[i] = new double[n];
+		for (int j = 0; j < n; j++){
+			cost[i][j] = data.getDistance(i+1,j+1);
+		}
+	}
 
-    Solucao melhorSolucao = ILS(data, 50, maxIterILS);
+	hungarian_problem_t p;
+	int mode = HUNGARIAN_MODE_MINIMIZE_COST;
+	hungarian_init(&p, cost, n, n, mode); // Carregando o problema
 
-    cout << "\nCusto da melhor solucao encontrada: " << melhorSolucao.cost << endl;
+    double custo = framework(&p, branching, n, cost);
+    cout << "\nCusto da melhor solucao encontrada: " << custo << '\n';
 
     return 0;
 }

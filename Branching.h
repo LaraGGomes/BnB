@@ -3,10 +3,11 @@
 
 #include "Arvore.h"
 #include <string>
+#include <queue>
 
-no branchingStrategy(string s);
-no DFS();
-no BFS();
-no menorLB();
+list<no>::iterator branchingStrategy(list<no> &arvore, string &modo);
+list<no>::iterator DFS(list<no> &arvore);
+list<no>::iterator BFS(list<no> &arvore);
+list<no>::iterator menorLB(list<no> &arvore);
 
 #endif

@@ -32,10 +32,29 @@ vector<vector<int>> subtours(vector<vector<bool>> &matriz) {
         }
     }
 
-    // organizar por tamanho de subtour para o primeiro ser o menor
-    sort(s.begin(), s.end(), [&](const auto &x, const auto &y) {
-        return x.size() < y.size();
-    });
-
     return s;
+}
+
+vector<pair<int,int>> arcos_proibidos(vector<vector<int>> &sub, int escolhido) {
+    vector<pair<int,int>> arcos;
+
+    for (int i = 0; i < sub[escolhido].size()-1; i++) {
+        arcos.push_back(make_pair(sub[escolhido][i], sub[escolhido][i+1]));
+    }
+
+    return arcos;
+}
+
+int subtourEscolhido(vector<vector<int>> &s){
+    int menor = 0;
+    for (int i = 1; i < s.size(); i++) {
+        if (s[i].size() < s[menor].size())
+            menor = i;
+    }
+
+    return menor;
+}
+
+bool ehViavel(vector<vector<int>> &subtours) {
+    return (subtours.size() == 1);
 }

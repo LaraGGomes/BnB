@@ -1,21 +1,15 @@
 #ifndef SOLUCAO_H
 #define SOLUCAO_H
 
-#include <iostream>
-#include <vector>
-#include "leitor-instancias/src/Data.h"
+#include <limits>
+#include "algoritmo-hungaro/src/hungarian.h"
+#include "Arvore.h"
+#include "Branching.h"
 
 using namespace std;
 
-typedef struct Solucao {
-    vector<int> sequence;
-    double cost;
-} Solucao;
-
-void exibirSolucao(Solucao *s);
-void calcularCusto(Data& data, Solucao *s);
-
-#define d(x, y) getDistance(x, y)
-// pra simplificar o getDistance, que calcula o custo entre dois vértices
+void criarMatriz(hungarian_problem_t* p, vector<vector<bool>> &matriz);
+void novaSolucao(no &node, hungarian_problem_t *p, size_t &n, double **c);
+double framework(hungarian_problem_t* p, string &modo, size_t n, double **matrizCusto);
 
 #endif
