@@ -6,5 +6,8 @@ Compilar o programa:
 
 Rodar uma instância:
 
-    ./programa.exe leitor-instancias/instances/nomedainstancia.tsp
+    ./programa.exe instances/nomedainstancia.tsp branchingStrategy
+
+No campo de estratégia de branching, digite entre as opções: DFS (Depth-First Search), BFS (Breadth-First Search) ou LB (menor lower bound)
+A estratégia base é DFS.
 

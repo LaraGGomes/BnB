@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
 
     auto data = Data(argc, argv[1]);
     data.read();
-    string branching = "DFS";
+    string branching = argv[2];
 
     size_t n = data.getDimension();
 

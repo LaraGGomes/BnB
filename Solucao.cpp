@@ -1,5 +1,4 @@
 #include "Solucao.h"
-#include <iostream>
 
 void criarMatriz(hungarian_problem_t* p, vector<vector<bool>> &matriz) {
     int** C = p->assignment;
