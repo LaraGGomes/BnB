@@ -21,11 +21,7 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	hungarian_problem_t p;
-	int mode = HUNGARIAN_MODE_MINIMIZE_COST;
-	hungarian_init(&p, cost, n, n, mode); // Carregando o problema
-
-    double custo = framework(&p, branching, n, cost);
+    double custo = framework(branching, n, cost);
     cout << "\nCusto da melhor solucao encontrada: " << custo << '\n';
 
     return 0;

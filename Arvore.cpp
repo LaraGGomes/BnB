@@ -1,10 +1,11 @@
 #include "Arvore.h"
 
-vector<vector<int>> subtours(vector<vector<bool>> &matriz) {
+vector<vector<int>> subtours(hungarian_problem_t* p) {
+    int **matriz = p->assignment;
     vector<vector<int>> s;
-    bool vis[matriz.size()+1];
+    vector<bool> vis(p->num_cols + 1, false);
 
-    for (int i = 0; i < matriz.size(); i++) {
+    for (int i = 0; i < p->num_rows; i++) {
         if (!vis[i+1]) {
             vector<int> sub;
             vis[i+1] = true;

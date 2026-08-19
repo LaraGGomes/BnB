@@ -8,8 +8,7 @@
 
 using namespace std;
 
-void criarMatriz(hungarian_problem_t* p, vector<vector<bool>> &matriz);
-void novaSolucao(no &node, hungarian_problem_t *p, size_t &n, double **c);
-double framework(hungarian_problem_t* p, string &modo, size_t n, double **matrizCusto);
+void novaSolucao(no &node, size_t &n, double **c);
+double framework(string &modo, size_t n, double **matrizCusto);
 
 #endif
